@@ -26,6 +26,12 @@ ddclient_version: 4.0.0
 ddclient_uid: ""
 ddclient_gid: ""
 
+# Controls the user that the container runs as. Set to `0` to run as root.
+ddclient_container_uid: "{{ ddclient_uid }}"
+
+# Controls the group that the container runs as. Set to `0` to run as root.
+ddclient_container_gid: "{{ ddclient_gid }}"
+
 ddclient_container_image: "{{ ddclient_container_image_registry_prefix }}linuxserver/ddclient:{{ ddclient_container_image_tag }}"
 ddclient_container_image_tag: "{{ ddclient_version }}"
 ddclient_container_image_registry_prefix: "{{ ddclient_container_image_registry_prefix_upstream }}"

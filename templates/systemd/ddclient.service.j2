@@ -23,13 +23,13 @@ Environment="HOME={{ devture_systemd_docker_base_systemd_unit_home_path }}"
 ExecStartPre={{ devture_systemd_docker_base_host_command_sh }} -c '{{ ddclient_container_cleanup_command | trim | replace("\n", " ") }}'
 
 {#
-  PUID and PGID are specified on env.j2 to run the container as ddclient_uid:ddclient_gid
+  PUID and PGID are specified on env.j2 to run the container as ddclient_container_uid:ddclient_container_gid
   See: https://docs.linuxserver.io/images/docker-ddclient/#user-group-identifiers
 #}
 ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
       --rm \
       --name={{ ddclient_identifier }} \
-      --user={{ ddclient_uid }}:{{ ddclient_gid }} \
+      --user={{ ddclient_container_uid }}:{{ ddclient_container_gid }} \
       --log-driver=none \
       --read-only \
       --network={{ ddclient_container_network }} \
